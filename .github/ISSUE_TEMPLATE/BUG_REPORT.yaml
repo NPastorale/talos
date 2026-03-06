@@ -1,0 +1,74 @@
+name: "Bug Report"
+description: "File a Talos bug report."
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > Ⓘ **Before submitting**
+        >
+        > Verify the issue is not covered by [Troubleshooting docs](https://docs.siderolabs.com/talos/latest/troubleshooting/troubleshooting)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: "What did you expect vs what happened? When did this start (new install, upgrade, config change)?"
+      placeholder: |
+        Expected: ...
+        Observed: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: "How do you trigger this bug? Please walk us through it step by step"
+      placeholder: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+
+  - type: upload
+    id: support-bundle
+    attributes:
+      label: "Talos Support Bundle"
+      description: "Obtained via `talosctl support --nodes <nodes>` [Docs](https://docs.siderolabs.com/talos/latest/reference/cli#talosctl-support)"
+    validations:
+      accept: ".zip"
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Platform"
+      multiple: true
+      options:
+        - "Bare metal"
+        - "Cloud"
+        - "Virtualized"
+        - "SBCs"
+        - "Local"
+        - "talosctl"
+        - "Other"
+        - "N/A"
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: "Talos Machine Config"
+      description: "If relevant, attach config(s) with secrets redacted. Include patches if used."
+      placeholder: "Paste YAML or link to gist."
+      render: yaml
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Logs and additional information"
+      description: "Any additional relevant information to diagnose the issue."

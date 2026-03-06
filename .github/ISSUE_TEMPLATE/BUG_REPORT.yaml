@@ -33,6 +33,7 @@ body:
         ...
     validations:
       required: true
+      render: bash
 
   - type: upload
     id: support-bundle
